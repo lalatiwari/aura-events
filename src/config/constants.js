@@ -26,3 +26,9 @@ export const NAV_LINKS = [
   { label: 'Packages', path: '/packages' },
   { label: 'Contact', path: '/contact' },
 ];
+
+export const CONTACT_INFO = {
+  phone: '+91 98765 43210',
+  email: 'concierge@auraevents.com',
+  address: 'DLF CyberCity, Phase 2, Gurugram, Haryana, India',
+};
