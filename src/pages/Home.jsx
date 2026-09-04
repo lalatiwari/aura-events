@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, ArrowRight, ShieldCheck, Clock, Award, Compass, Play } from 'lucide-react';
+import { Sparkles, ArrowRight, ShieldCheck, Clock, Award, Compass } from 'lucide-react';
 
 import Container from '../components/common/Container';
 import SectionHeading from '../components/common/SectionHeading';
@@ -8,18 +8,15 @@ import Button from '../components/common/Button';
 import Card from '../components/common/Card';
 import Counter from '../components/common/Counter';
 import ServiceCard from '../components/services/ServiceCard';
-import FAQItem from '../components/faq/FAQItem';
+
+import TestimonialsSection from '../components/testimonials/TestimonialsSection';
+import FAQAccordion from '../components/faq/FAQAccordion';
+import { FAQ_ITEMS } from '../data/faqData';
 
 import { SERVICES_DATA } from '../data/services';
-import { STATS_DATA, WHY_CHOOSE_US, PLANNING_PROCESS, FAQS_PREVIEW } from '../data/homeData';
+import { STATS_DATA, WHY_CHOOSE_US, PLANNING_PROCESS } from '../data/homeData';
 
 export default function Home() {
-  const [openFAQIndex, setOpenFAQIndex] = useState(0);
-
-  const handleToggleFAQ = (index) => {
-    setOpenFAQIndex((prev) => (prev === index ? -1 : index));
-  };
-
   return (
     <div className="space-y-24 sm:space-y-32 pb-24">
       {/* 1. HERO SECTION */}
@@ -170,35 +167,31 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 6. FAQ ACCORDION PREVIEW */}
-      <section className="bg-brand-surface/20 py-20 border-y border-brand-border/40">
+      {/* 6. CLIENT TESTIMONIALS & PRESS ENDORSEMENTS */}
+      <TestimonialsSection />
+
+      {/* 7. FREQUENTLY ADDRESSED PROTOCOLS (ACCORDION) */}
+      <section className="py-24 bg-brand-dark border-b border-brand-border/40">
         <Container size="narrow">
           <SectionHeading
             eyebrow="Questions & Clarifications"
-            title="Everything You Need to Know"
-            subtitle="Clear answers regarding our bespoke engagement models, vendor governance, and destination coverage."
+            title="Frequently Addressed Protocols"
+            subtitle="Essential operational policies regarding discretion, advance scheduling, and worldwide productions."
           />
 
-          <div className="space-y-4">
-            {FAQS_PREVIEW.map((faq, index) => (
-              <FAQItem
-                key={faq.id}
-                faq={faq}
-                isOpen={openFAQIndex === index}
-                onToggle={() => handleToggleFAQ(index)}
-              />
-            ))}
+          <div className="mt-12">
+            <FAQAccordion items={FAQ_ITEMS} />
           </div>
 
-          <div className="mt-10 text-center">
-            <Link to="/faq" className="text-xs uppercase tracking-luxury text-gold hover:text-white transition-colors">
-              Have more questions? Read full FAQ &rarr;
+          <div className="mt-12 text-center">
+            <Link to="/contact" className="text-xs uppercase tracking-luxury text-gold hover:text-white transition-colors">
+              Need specific protocol clarification? Consult our directors &rarr;
             </Link>
           </div>
         </Container>
       </section>
 
-      {/* 7. FINAL CALL TO ACTION (CTA) BANNER */}
+      {/* 8. FINAL CALL TO ACTION (CTA) BANNER */}
       <section>
         <Container>
           <div className="relative overflow-hidden bg-gradient-to-r from-brand-charcoal via-brand-surface to-brand-charcoal border border-gold/30 p-10 sm:p-16 md:p-20 text-center">
