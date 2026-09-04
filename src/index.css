@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    @apply border-brand-border;
+  }
+
+  body {
+    @apply bg-brand-dark text-slate-100 font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    @apply font-serif tracking-tight text-white;
+  }
+}
+
+@layer utilities {
+  .text-gold-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-light via-gold to-gold-dark;
+  }
+}
